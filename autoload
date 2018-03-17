@@ -175,18 +175,19 @@ def brute_force():
     print("")
     handsak=raw_input("[Select HandShake File:] > ")
     print("")
-    wordlist=raw_input("[Select WordList File:] >")
-    crad=raw_input("[InterFace:] >")
+    wordlist=raw_input("[Select WordList File:] > ")
     os.system('clear')
     print("[*]Cracking...........")
-    os.system('aircrack-ng' + handsak+ '-w' + wordlist +  crad)
+    os.system('aircrack-ng ' + handsak+ ' -w ' + wordlist)
     print("")
     userif = ''
     while not(userif == 'B' or userif == 'E'):
-        userif=raw_input("Type [b] Back or [e] Exit").upper()
+        userif=raw_input("[Type [b] Back or [e] Exit:] > ").upper()
         if userif == 'B':
             import Autoload
         elif userif == 'E':
+            print("")
+            print("Thanks For Using AutoLoad")
             sys.exit()
         else:
             print(Fore.RED +"Try Again")
@@ -228,7 +229,7 @@ while True:
             brute_force()
         elif user == 22:
             check_internet()
-            os.system('python updater.py')
+            os.system('python /usr/share/updater.py')
         elif user == 'clear':
             os.system('clear')
         else:
