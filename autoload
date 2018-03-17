@@ -128,7 +128,7 @@ def deauth():
         allcl()
     elif user == 3:
         os.system('clear')
-        os.system('xterm -e airodump-ng wlan0mon &')
+        os.system('gnome-terminal -e airodump-ng wlan0mon &')
         deauth()
     elif user == 4:
         os.system('airmon-ng start wlan0')
@@ -143,22 +143,7 @@ def deauth():
         import Autoload
     else:
        print("Wrong Choice")
-#------------------------------------------------------------------------------------------------------------------------------------------------------------
-def geolocate():
-    os.system('clear')
-    check_internet()
-    print("[*]::::::GeoLocate An IP Address::::::")
-    print("")
-    x = raw_input('[Input IP :] > ')
-    gip = pygeoip.GeoIP('/usr/local/bin/GeoLiteCity.dat')
-    rec = gip.record_by_addr(x)
-    for val in rec.items():
-        print ("%s: %s" %(val))
-        print("")
-    user_input=raw_input("Press Any key to Go back...")
-    os.system('clear')
-    import Autoload
-#------------------------------------------------------------------------------------------------------------------------------------------------------------    
+#------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 def check_ip():
     os.system('clear')
     check_internet()
@@ -222,7 +207,12 @@ while True:
         elif user == 4:
             deauth()
         elif user == 5:
-            geolocate()
+            check_internet()
+            os.system('clear')
+            print("[*]::::::GeoLocate An IP Address::::::")
+            print("")
+            os.system('bash geoip.sh')
+            import Autoload
         elif user == 6:
             check_ip()
         elif user == 7:

@@ -39,6 +39,14 @@ sudo cp /root/Autoload/version.txt /usr/share/version.txt
 sudo cp /root/Autoload/version.txt /usr/bin/version.txt
 sudo cp /root/Autoload/version.txt /usr/sbin/version.txt
 #------------------------------------------------------------------------------------
+sudo cp /root/Autoload/geoip.sh /usr/local/share/geoip.sh
+sudo cp /root/Autoload/geoip.sh /usr/local/bin/geoip.sh
+sudo cp /root/Autoload/geoip.sh /usr/bin/geoip.sh
+sudo cp /root/Autoload/geoip.sh /usr/share/geoip.sh
+sudo cp /root/Autoload/geoip.sh /usr/bin/geoip.sh
+sudo cp /root/Autoload/geoip.sh /usr/sbin/geoip.sh
+#------------------------------------------------------------------------------------
+
 sudo chmod +x /usr/local/share/autoload
 sudo chmod +x /usr/local/bin/autoload
 sudo chmod +x /usr/bin/autoload
