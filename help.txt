@@ -1,0 +1,18 @@
+     options                          discription
+  -------------                     ---------------
+
+1.)Create payload        :  make msfvenom reverse_tcp payload for windows/android
+
+2.)                      : 
+     
+3.)create Fake AP        :  create a fake Access-point/hotspot to capture Facebook ID and Password
+
+4.)Deauth Attack         :  Automatically Disconnect devises from a WiFi network
+
+5.)GeoLocate an IP       :  Find Location of Any IP address
+
+6.)view public IP        :  show your public ip when you connect to the internet
+
+7.) Crack wpa2 Handshake :  crack wpa2 secure WiFi network  Password from there Handshake File
+
+

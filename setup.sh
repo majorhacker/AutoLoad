@@ -11,6 +11,7 @@ sudo cp /root/AutoLoad/autoload /usr/share/Autoload.py
 sudo cp /root/AutoLoad/autoload /usr/bin/Autoload.py
 sudo cp /root/AutoLoad/autoload /usr/sbin/Autoload.py
 #------------------------------------------------------------------
+sudo cp /root/AutoLoad/help.txt /usr/share/help.txt
 #------------------------------------------------------------------------------------
 sudo cp /root/AutoLoad/loading.py /usr/local/share/loading.py
 sudo cp /root/AutoLoad/loading.py /usr/local/bin/loading.py
@@ -53,8 +54,8 @@ sudo chmod +x /usr/bin/autoload
 sudo chmod +x /usr/share/autoload
 sudo chmod +x /usr/bin/autoload
 sudo chmod +x /usr/sbin/autoload
-sudo chmod +x /root/AutoLoad/interface.py
+sudo chmod +x /root/AutoLoad/install.py
 #------------------------------------------------------------------------------------
 echo 'Moving into new Terminal..'
-gnome-terminal --window --working-directory=/root/AutoLoad  -- ./interface.py
+gnome-terminal --window --working-directory=/root/AutoLoad  -- ./install.py
 exit
