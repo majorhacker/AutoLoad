@@ -13,7 +13,7 @@ def yes_no():
           while not(userif == 'Y' or userif == 'N'):
                userif=raw_input("[Type [y] YES or [n] NO:] > ").upper()
                if userif == 'Y':
-                    os.system('python /root/Autoload/updating.py')
+                    os.system('gnome-terminal --window --working-directory=/root/Downloads  -- python /root/AutoLoad/updating.py')
                elif userif == 'N':
                     import Autoload
                else:
