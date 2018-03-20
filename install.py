@@ -22,24 +22,22 @@ def check_internet():
         print("Not Connected to the Internet")
     else:
         print(Fore.GREEN +"Connected")
-
+os.system('clear')
 if not os.geteuid() == 0:
     sys.exit("\033[1;31mPlease run this script as root!\033[0m")
 
-header = """
-  ------------------
-< \033[1;36mAutoLoad Installer!!\033[1;36m >
-  ------------------
-         \   ^__^
-          \  (oo)\_______
-             (__)\       )\/\
-
-                 ||-----||
-                 ||     ||
-"""
-
-os.system('clear')
 print("")
+print("  ------------------")
+print("< \033[1;36mAutoLoad Installer!!\033[1;36m >")
+print("  ------------------")
+print("         \   ^__^   ")
+print("          \  (oo)\_______    ")
+print("             (__)\       )\/\  ")
+print("                 ||-----||      ")
+print("                 ||     ||     ")
+print("")
+print("")
+os.system('mkdir /root/AutoLoad/handshakes')
 print(Fore.GREEN +"[*] Enter the name of your wireless interface in Monitor Mode....")
 print("")
 monitor=raw_input(Fore.BLUE +'[monitor:] > ')

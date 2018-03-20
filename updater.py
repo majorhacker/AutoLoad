@@ -24,11 +24,11 @@ def yes_no():
         sys.exit()
 
 def update_client_version(version):
-    with open("/usr/share/version.txt", "r") as vnum:
-        if vnum.read() != version:
-            return True
-        else:
-            return False
+    vnum=open("/usr/share/version.txt", "r").read()
+    if vnum != version:
+         return True
+    else:
+         return False
 
 
 def main():

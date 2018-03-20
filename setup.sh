@@ -12,6 +12,8 @@ sudo cp /root/AutoLoad/autoload /usr/bin/Autoload.py
 sudo cp /root/AutoLoad/autoload /usr/sbin/Autoload.py
 #------------------------------------------------------------------
 sudo cp /root/AutoLoad/help.txt /usr/share/help.txt
+sudo cp /root/AutoLoad/cupp.py /usr/share/cupp.py
+sudo cp /root/AutoLoad/cupp.cfg /usr/share/cupp.cfg
 #------------------------------------------------------------------------------------
 sudo cp /root/AutoLoad/loading.py /usr/local/share/loading.py
 sudo cp /root/AutoLoad/loading.py /usr/local/bin/loading.py
