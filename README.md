@@ -15,13 +15,13 @@ This Script is Automate Your Work
 
 [*] Things you can do with this Script
 
-1. Make a Android Payload
+1. Make a Payload
 
-:::::This option make a msfvenom reverse_tcp payload for android.
+:::::This option make a msfvenom reverse_tcp payload for android and windows.
 -------------
-2. Make a windows Payload
+2. Create a Wordlist 
 
-:::::This option make a msfvenom reverse_tcp payload for windows.
+:::::This option make wordlist based on victim info using cupp!
 -------------
 3. Create Fake AP
 
@@ -44,6 +44,14 @@ This Script is Automate Your Work
 7. Crack wpa2 handshake
 
 :::::use aircrack-ng to crack wpa2 handshake file.
+
+8. Capture Handshake
+
+:::::use aircrack-ng to capture wpa2 handshake file.
+
+11. Nmap Scan
+
+:::::Do Multi type of scan through nmap.
 
 ::::::::::::::::::::::::::::::::::STAY_UPDATED:::::::::::::::::::::::::::::::::::::
 
