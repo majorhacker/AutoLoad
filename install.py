@@ -56,6 +56,8 @@ print "\033[1;33m[*] Loading...\033[0m"
 os.system('apt-get install aircrack-ng')
 os.system('apt install wifiphisher ')
 os.system('apt install metasploit-framework')
+os.system('apt install nmap')
+os.system('apt install sslstrip')
 print "\033[1;32m[!] Finished Installing! Run 'autoload' to run program [!]\033[0m"
 print("")
 user=raw_input("press any key to EXIT!..")

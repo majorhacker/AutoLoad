@@ -23,25 +23,30 @@ def yes_no():
         print(Fore.GREEN +"Thanks For Using AutoLoad!")
         sys.exit()
 
-def update_client_version(version):
-    vnum=open("/usr/share/version.txt", "r").read()
-    if vnum != version:
-         return True
-    else:
-         return False
+def update_client_version():
+     version = urllib2.urlopen("https://github.com/majorhacker/AutoLoad/blob/master/version.txt").read()
+     vnum=open("/usr/share/version.txt", "r").read()
+     if vnum != version:
+          return True
+     else:
+          return False
 
 
 def main():
-    version = urllib2.urlopen("https://github.com/majorhacker/AutoLoad/blob/master/version.txt").read()
-    if update_client_version(version) is True:
-        print ("[*] Latest version Avalaible..")
-        yes_no()
-        
-    else:
-        print("[*] You are already up to date with git origin master.")
-        print("")
-        user_input=raw_input("Press Any key to Go back...")
-        import Autoload
+     if update_client_version() is True:
+          print ("[*] Latest version Avalaible..")
+          yes_no()
+     elif update_client_version() is False:
+          print("[*] You are already up to date with git origin master.")
+          print("")
+          user_input=raw_input("Press Any key to Go back...")
+          import Autoload
+     else:
+          print("[*] You are already up to date with git origin master.")
+          print("")
+          user_input=raw_input("Press Any key to Go back...")
+          import Autoload
+          
 try:
      print("[*] Checking version information..")
      main()
